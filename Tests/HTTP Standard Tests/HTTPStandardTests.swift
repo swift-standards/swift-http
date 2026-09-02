@@ -1,4 +1,6 @@
 import HTTP_Standard
+import RFC_9110
+import RFC_9111
 import Testing
 
 extension HTTP {
@@ -27,9 +29,10 @@ extension HTTP {
             struct Syntax {
 
                 @Test
-                func `version vocabulary reaches through the converger`() {
-                    #expect(HTTP.Version.http11.major == 1)
-                    #expect(HTTP.Version.http11.minor == 1)
+                func `version vocabulary reaches through the converger`() throws {
+                    let version = try HTTP.Version(major: 1, minor: 1)
+                    #expect(version.major == 1)
+                    #expect(version.minor == 1)
                 }
             }
 
