@@ -41,8 +41,8 @@ extension HTTP {
 
                 @Test
                 func `caching vocabulary reaches through the converger`() {
-                    let _: HTTP.Age.Type = HTTP.Age.self
-                    let _: HTTP.CacheControl.Type = HTTP.CacheControl.self
+                    let _: HTTP.Cache.Age.Type = HTTP.Cache.Age.self
+                    let _: HTTP.Cache.Control.Type = HTTP.Cache.Control.self
                 }
             }
         }
