@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-http-standard",
+    name: "swift-http",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -12,8 +12,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "HTTP Standard",
-            targets: ["HTTP Standard"]
+            name: "HTTP",
+            targets: ["HTTP"]
         )
     ],
     dependencies: [
@@ -22,38 +22,26 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-ietf/swift-rfc-9111.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-ietf/swift-rfc-9112.git",
+            url: "https://github.com/swift-atoms/swift-byte.git",
             branch: "main"
         ),
     ],
     targets: [
         .target(
-            name: "HTTP Standard",
+            name: "HTTP",
             dependencies: [
                 .product(
                     name: "RFC 9110",
                     package: "swift-rfc-9110"
-                ),
-                .product(
-                    name: "RFC 9111",
-                    package: "swift-rfc-9111"
-                ),
-                .product(
-                    name: "RFC 9112",
-                    package: "swift-rfc-9112"
-                ),
+                )
             ]
         ),
         .testTarget(
-            name: "HTTP Standard Tests",
+            name: "HTTP Tests",
             dependencies: [
-                "HTTP Standard",
+                "HTTP",
                 .product(name: "RFC 9110", package: "swift-rfc-9110"),
-                .product(name: "RFC 9111", package: "swift-rfc-9111"),
+                .product(name: "Byte", package: "swift-byte"),
             ]
         ),
     ],
